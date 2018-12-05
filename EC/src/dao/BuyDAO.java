@@ -112,14 +112,15 @@ public class BuyDAO {
 					"SELECT * FROM t_buy"
 							+ " JOIN m_delivery_method"
 							+ " ON t_buy.delivery_method_id = m_delivery_method.id"
-							+ " WHERE t_buy.user_id = ?");
+							+ " WHERE t_buy.user_id = ?"
+							+ " ORDER BY create_date DESC");
 			st.setInt(1,userId);
 
 			ResultSet rs = st.executeQuery();
 
 			ArrayList<BuyDataBeans> Ublist = new ArrayList<BuyDataBeans>();
 
-			if (rs.next()) {
+			while (rs.next()) {
 				BuyDataBeans bdb = new BuyDataBeans();
 				bdb.setId(rs.getInt("id"));
 				bdb.setTotalPrice(rs.getInt("total_price"));

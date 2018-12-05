@@ -43,10 +43,9 @@ public class UserData extends HttpServlet {
 
 			request.setAttribute("validationMessage", validationMessage);
 			request.setAttribute("udb", udb);
-
-
+			
 			ArrayList<BuyDataBeans> bdbList = BuyDAO.UserBydatabeans(userId);
-			request.setAttribute("bdbList", bdbList);
+			session.setAttribute("bdbList", bdbList);
 
 
 
